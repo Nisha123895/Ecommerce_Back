@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 2 # Or whatever number you want
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp
+          image: 533267252835.dkr.ecr.ap-south-1.amazonaws.com/myapp:latest # Using the ECR URL from Jenkinsfile
+          ports:
+            - containerPort: 80
